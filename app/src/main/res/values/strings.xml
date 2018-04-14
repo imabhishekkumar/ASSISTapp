@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">ASSIST</string>
+    <string name="Main">Calender</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="club">Club</string>
+    <string name="campus_map">Campus Map</string>
+    <string name="cgpa_calculator">CGPA Calculator</string>
+    <string name="todo1">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="todo3">TODO</string>
+    <string name="todo4">TODO</string>
+    <string name="subject1">Subject1</string>
+    <string name="subject2">Subject2</string>
+    <string name="subject3">Subject3</string>
+    <string name="subject4">Subject4</string>
+    <string name="subject5">Subject5</string>
+    <string name="subject6">Subject6</string>
+    <string name="subject7">Subject7</string>
+    <string name="subject8">Subject8</string>
+    <string name="subject9">Subject9</string>
+    <string name="marks_obtained">Marks Obtained</string>
+    <string name="max_marks">Max Marks</string>
+    <string name="grade_points">Grade Points</string>
+    <string name="submit">Submit</string>
+    <string name="blank" />
+    <string name="todo5">TODO</string>
+    <string-array name="dropdown">
+        <item>100</item>
+        <item>50</item>
+    </string-array>
+</resources>
