@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">ASSIST</string>
     <string name="Main">Calender</string>
-    <string name="coming_soon">Coming Soon</string>
     <string name="club">Club</string>
     <string name="campus_map">Campus Map</string>
     <string name="cgpa_calculator">CGPA Calculator</string>
@@ -23,9 +22,29 @@
     <string name="grade_points">Grade Points</string>
     <string name="submit">Submit</string>
     <string name="blank" />
-    <string name="todo5">TODO</string>
-    <string-array name="dropdown">
-        <item>100</item>
-        <item>50</item>
-    </string-array>
+
+    <string name="morning">-Good Morning-</string>
+    <string name="afternoon">-Good Afternoon-</string>
+    <string name="Evening">-Good Evening-</string>
+    <string name="Night">-Good Night-</string>
+    <string name="todo">TODO</string>
+    <string name="library">Library</string>
+    <string name="downloads">Downloads</string>
+    <string name="hardware">Hardware Club</string>
+    <string name="hardwarepres">Club President: Shashwat Shankar</string>
+    <string name="hardwarecont">Contact:hardwareclub.sbu@gmail.com</string>
+    <string name="gamiconname">Gamicon Club</string>
+    <string name="gamiconpres">Club President: Prabhat Gupta</string>
+    <string name="gamiconcontact">Contact: Club_gaming@yahoo.com</string>
+    <string name="codingtitle">Coding Club</string>
+    <string name="saif">Saif Ali Shaik</string>
+    <string name="contsaif">saif@workmail.com</string>
+    <string name="msctitle">Microsoft Campus Club</string>
+    <string name="mscpres">Rachakonda Sai Vaishnavi</string>
+    <string name="msccontact">rachakonda.sv@gmail.com</string>
+    <string name="dsctitle">Developer Student Club</string>
+    <string name="cogtitle">Cognizant Student Club</string>
+    <string name="invalid">No/Invalid input; if sub9 does not exist, give values =0</string>
+    <string name="range">Marks/Grade points not in range</string>
+    <string name="lessthan">Marks obtained is less than Max Marks</string>
 </resources>
