@@ -18,10 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".club" />
-        <activity android:name=".HardwareClub" />
-        <activity android:name=".GamiconClub" />
-        <activity android:name=".allclubs"></activity>
+        <activity
+            android:name=".club"
+            android:label="Campus Clubs" />
+        <activity
+            android:name=".allclubs"
+            android:label="Club Details" />
+        <activity android:name=".CourseMaterial" />
+        <activity android:name=".cousefinal"></activity>
     </application>
 
 </manifest>

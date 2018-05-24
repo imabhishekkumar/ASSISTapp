@@ -59,7 +59,10 @@ TextView greeting;
         Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
     }
     public void dowbtn(View v)
-    {
-        Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
+    { Intent main=new Intent(MainActivity.this,CourseMaterial.class );
+      startActivity(main);
+
+
+
     }
 }
