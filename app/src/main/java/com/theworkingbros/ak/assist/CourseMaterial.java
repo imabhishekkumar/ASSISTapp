@@ -23,10 +23,10 @@ public class CourseMaterial extends AppCompatActivity {
         submit=findViewById(R.id.submit);
         branchname= findViewById(R.id.branchname);
         semester= findViewById(R.id.semester);
-        String[] items = new String[]{"Computer Science and Engineering", "Mechanical Engineering", "Information Technology"};
+        String[] items = new String[]{"Computer Science and Engineering"};
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items);
         branchname.setAdapter(adapter);
-        String[] items2 = new String[]{"1", "2", "3","4","5","6","7","8"};
+        String[] items2 = new String[]{"1","3","5"};
         ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items2);
         semester.setAdapter(adapter2);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -37,11 +37,7 @@ public class CourseMaterial extends AppCompatActivity {
         sem=(String) semester.getSelectedItem();
             if(name.equals("Computer Science and Engineering"))
                  branchid=1;
-             else if(name.equals("Mechanical Engineering"))
-                    branchid=2;
-             else if(name.equals("Information Technology"))
-                branchid=3;
-             }
+                        }
 
         });
     }
