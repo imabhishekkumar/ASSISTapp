@@ -23,7 +23,8 @@ public class CourseMaterial extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_material);
-        check= findViewById(R.id.check);
+
+
         submit=findViewById(R.id.submit);
         branchname= findViewById(R.id.branchname);
         semester= findViewById(R.id.semester);

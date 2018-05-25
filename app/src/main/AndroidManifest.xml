@@ -12,11 +12,7 @@
             android:name=".CGPA"
             android:label="CGPA Calculator" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".club"
@@ -25,7 +21,15 @@
             android:name=".allclubs"
             android:label="Club Details" />
         <activity android:name=".CourseMaterial" />
-        <activity android:name=".cousefinal"></activity>
+        <activity android:name=".cousefinal" />
+        <activity android:name=".Userprofile" />
+        <activity android:name=".firsttime">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

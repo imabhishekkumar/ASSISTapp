@@ -20,7 +20,7 @@ ImageView logo;
 
         Intent club = getIntent();
         Integer numb = club.getIntExtra("clubnumb",0);
-        //int numb=Integer.valueOf(str);
+
         if(numb==1)
         {
             title.setText(R.string.hardware);
