@@ -3,13 +3,13 @@ package com.theworkingbros.ak.assist.download;
 public class subjects {
     
     String link;   
-    
+
 
     public String cse(int sem)
     {
         if(sem==1)
     {
-        link="https://drive.google.com/file/d/1A49NQO772YhbTt7S8rMF3kPC6BVvBhDz/view?usp=sharing";
+        link="https://drive.google.com/uc?export=download&id=A49NQO772YhbTt7S8rMF3kPC6BVvBhDz";
     }
         if(sem==2)
         {
@@ -24,7 +24,7 @@ public class subjects {
         }
         if(sem==5)
         {
-            link="https://drive.google.com/drive/folders/1C-C4G6KzW_yIV1zUUNGshdqK1PrCTLqG?usp=sharing";
+            link="";
         }
         if(sem==7)
         {

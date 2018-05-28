@@ -31,7 +31,7 @@ public class CourseMaterial extends AppCompatActivity {
         String[] items = new String[]{"Computer Science and Engineering"};
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items);
         branchname.setAdapter(adapter);
-        String[] items2 = new String[]{"1","2","3","4","5"};
+        String[] items2 = new String[]{"1","2","3","4"};
         ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items2);
         semester.setAdapter(adapter2);
         submit.setOnClickListener(new View.OnClickListener() {
