@@ -7,7 +7,6 @@
     <string name="todo1">TODO</string>
     <string name="todo2">TODO</string>
     <string name="todo3">TODO</string>
-    <string name="todo4">TODO</string>
     <string name="subject1">Subject1</string>
     <string name="subject2">Subject2</string>
     <string name="subject3">Subject3</string>
@@ -23,10 +22,6 @@
     <string name="submit">Submit</string>
     <string name="blank" />
 
-    <string name="morning">-Good Morning-</string>
-    <string name="afternoon">-Good Afternoon-</string>
-    <string name="Evening">-Good Evening-</string>
-    <string name="Night">-Good Night-</string>
     <string name="todo">TODO</string>
     <string name="library">Library</string>
     <string name="downloads">Downloads</string>
@@ -47,4 +42,5 @@
     <string name="invalid">No/Invalid input; if sub9 does not exist, give values =0</string>
     <string name="range">Marks/Grade points not in range</string>
     <string name="lessthan">Marks obtained is less than Max Marks</string>
+    <string name="programming">Programming Languages</string>
 </resources>

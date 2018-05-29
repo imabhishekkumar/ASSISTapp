@@ -9,27 +9,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
-            android:name=".CGPA"
+            android:name=".Activities.CGPA"
             android:label="CGPA Calculator" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".Activities.MainActivity" />
         <activity
-            android:name=".club"
+            android:name=".Activities.club"
             android:label="Campus Clubs" />
         <activity
-            android:name=".allclubs"
+            android:name=".Activities.allclubs"
             android:label="Club Details" />
-        <activity android:name=".CourseMaterial" />
-        <activity android:name=".cousefinal" />
-        <activity android:name=".Userprofile" />
-        <activity android:name=".firsttime">
+        <activity android:name=".Activities.CourseMaterial" />
+        <activity android:name=".Activities.cousefinal" />
+        <activity android:name=".Activities.Userprofile" />
+        <activity android:name=".Activities.library" />
+        <activity android:name=".study.StudyMaterials" />
+        <activity
+            android:name=".Activities.LoginPage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.Register"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Activities.Addpost"></activity>
     </application>
 
 </manifest>
