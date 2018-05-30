@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.theworkingbros.ak.assist">
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -11,6 +12,8 @@
         <activity
             android:name=".Activities.CGPA"
             android:label="CGPA Calculator" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Theme.AppCompat.Light"/>
         <activity android:name=".Activities.MainActivity" />
         <activity
             android:name=".Activities.club"
@@ -20,7 +23,7 @@
             android:label="Club Details" />
         <activity android:name=".Activities.CourseMaterial" />
         <activity android:name=".Activities.cousefinal" />
-        <activity android:name=".Activities.Userprofile" />
+
         <activity android:name=".Activities.library" />
         <activity android:name=".study.StudyMaterials" />
         <activity
@@ -34,7 +37,8 @@
         </activity>
         <activity
             android:name=".Activities.Register"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+             />
         <activity android:name=".Activities.Addpost"></activity>
     </application>
 

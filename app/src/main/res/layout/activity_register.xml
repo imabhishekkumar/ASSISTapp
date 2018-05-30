@@ -14,33 +14,34 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="40dp"
         android:text="Register for ASSIST"
         android:textColor="#ffffff"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Full Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/avatarpic" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -52,9 +53,9 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
-        android:id="@+id/pa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -67,8 +68,8 @@
 
     <EditText
         android:id="@+id/registernumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -77,11 +78,11 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pa" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/registerbtn"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -95,7 +96,7 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -105,5 +106,19 @@
         android:textColor="#30A9DD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/registerbtn" />
+
+    <ImageButton
+        android:id="@+id/avatarpic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#30A9DD"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        app:srcCompat="@drawable/avatar" />
 </android.support.constraint.ConstraintLayout>

@@ -43,4 +43,5 @@
     <string name="range">Marks/Grade points not in range</string>
     <string name="lessthan">Marks obtained is less than Max Marks</string>
     <string name="programming">Programming Languages</string>
+    <string name="welcomenote">Welcome to Assist!</string>
 </resources>
