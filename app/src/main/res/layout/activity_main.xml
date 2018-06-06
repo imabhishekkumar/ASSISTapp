@@ -52,7 +52,7 @@
             android:contentDescription="TODO"
             android:fontFamily="monospace"
             android:gravity="center_vertical"
-            android:text="Good Morning,Abhishek"
+            android:text="Welcome"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"

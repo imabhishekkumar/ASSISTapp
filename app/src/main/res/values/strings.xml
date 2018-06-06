@@ -44,4 +44,7 @@
     <string name="lessthan">Marks obtained is less than Max Marks</string>
     <string name="programming">Programming Languages</string>
     <string name="welcomenote">Welcome to Assist!</string>
+    <string name="title_activity_universitymap">universitymap</string>
+    <string name="welcome">Welcome, </string>
+    <string name="title_activity_addpostwoimg">Addpostwoimg</string>
 </resources>

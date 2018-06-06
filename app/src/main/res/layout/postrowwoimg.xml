@@ -26,15 +26,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/post_imglist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:background="@android:color/transparent"
-            android:cropToPadding="false"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/post_text"

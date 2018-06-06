@@ -9,11 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
@@ -25,11 +20,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
     private Context context;
     private List<Blog> blogList;
-    ////
-    //FirebaseDatabase database =FirebaseDatabase.getInstance();
-    //DatabaseReference mRef= database.getReference();
 
-    /////////
+
     public BlogRecyclerAdapter(Context context, List<Blog> blogList) {
         this.context = context;
         this.blogList = blogList;
@@ -47,13 +39,15 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
     public void onBindViewHolder(@NonNull BlogRecyclerAdapter.ViewHolder holder, int position) {
         Blog blog= blogList.get(position);
         String imageUrl=null;
-
         holder.title.setText(blog.getTitle());
         holder.desc.setText(blog.getDesc());
+        holder.username.setText(blog.getUsername());
+
 
         java.text.DateFormat dateFormat= java.text.DateFormat.getDateInstance();
         String formatteddate= dateFormat.format(new Date(Long.valueOf(blog.getTimestamp())).getTime());
         holder.timestamp.setText(formatteddate);
+
         imageUrl=blog.getImage();
         //TODO: Use picassa library
         Picasso.with(context)
@@ -71,17 +65,18 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         public TextView desc;
         public TextView timestamp;
         public ImageView img;
-        String userid;
+        public TextView username;
+
 
         public ViewHolder(View view, Context ctx) {
             super(view);
 
             context = ctx;
-            title= view.findViewById(R.id.post_titlelist);
+            title= view.findViewById(R.id.post_titlelistt);
             desc= view.findViewById(R.id.post_text);
             img= view.findViewById(R.id.post_imglist);
             timestamp=view.findViewById(R.id.timestamp);
-            userid=null;
+            username=view.findViewById(R.id.usernameTV);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

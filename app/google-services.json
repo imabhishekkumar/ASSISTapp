@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "221524041700",
+    "firebase_url": "https://assist-id.firebaseio.com",
+    "project_id": "assist-id",
+    "storage_bucket": "assist-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221524041700:android:94ce4c7503e1dfe5",
+        "android_client_info": {
+          "package_name": "com.theworkingbros.ak.assist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221524041700-2hlnei3gqmcpup0pjajs9e4nrtjq21sj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theworkingbros.ak.assist",
+            "certificate_hash": "ff6d22f3d74055721a7e24d1bb454a8fec5ec7c0"
+          }
+        },
+        {
+          "client_id": "221524041700-h5fd9h7s4pq05rjunc6rrcqknjp2h21e.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "221524041700-h5fd9h7s4pq05rjunc6rrcqknjp2h21e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7mhv-x_58quxRtzkzs7t5aGg9_fGuYlM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221524041700-h5fd9h7s4pq05rjunc6rrcqknjp2h21e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
