@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 import com.theworkingbros.ak.assist.Data.BlogRecyclerAdapter;
+import com.theworkingbros.ak.assist.Data.BlogRecyclerAdapterwoimg;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
 
@@ -38,7 +41,8 @@ import java.util.List;
     public class MainActivity extends AppCompatActivity {
     ImageButton cgpa,cal,map,club;
     TextView greeting;
-    String name,uid;
+    String name,uid,imgurl;
+    ImageView avatar;
     private DatabaseReference mDatabasereference,mdbref;
     private FirebaseDatabase mDatabase;
     private RecyclerView recyclerView;
@@ -46,7 +50,7 @@ import java.util.List;
     private List<Blog> bloglist;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
-
+    private BlogRecyclerAdapterwoimg blogRecyclerAdapterwoimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +63,7 @@ import java.util.List;
         mDatabasereference.keepSynced(true);
         mdbref=mDatabase.getReference().child("AssistUsers");
         mdbref.keepSynced(true);
-
+        avatar=findViewById(R.id.avatarpic);
         cgpa = findViewById(R.id.cgpa);
         map = findViewById(R.id.map);
         bloglist = new ArrayList<>();
@@ -77,6 +81,11 @@ import java.util.List;
             public void onDataChange(DataSnapshot dataSnapshot) {
                 name= dataSnapshot.child(uid).child("name").getValue(String.class);
                 greeting.setText(getString(R.string.welcome)+name);
+                imgurl=dataSnapshot.child(uid).child("image").getValue(String.class);
+                Picasso
+                        .with(MainActivity.this)
+                        .load(imgurl)
+                        .into(avatar);
             }
 
             @Override
@@ -96,7 +105,7 @@ import java.util.List;
         switch(item.getItemId()) {
             case R.id.action_add:
                 if (mUser != null && mAuth != null) {
-                    Intent post = new Intent(MainActivity.this, Addpost.class);
+                    Intent post = new Intent(MainActivity.this, Addpostwoimg.class);
                     startActivity(post);
                     finish();
                 }
@@ -133,10 +142,19 @@ import java.util.List;
 
                 bloglist.add(blog);
                 Collections.reverse(bloglist);
+                /////////////////////////////////////////////
+                blogRecyclerAdapterwoimg= new BlogRecyclerAdapterwoimg(MainActivity.this,bloglist);
+                recyclerView.setAdapter(blogRecyclerAdapterwoimg);
+                blogRecyclerAdapterwoimg.notifyDataSetChanged();
+
+                ////////////////////////////////////////////////////
 
                 blogRecyclerAdapter= new BlogRecyclerAdapter(MainActivity.this,bloglist);
                 recyclerView.setAdapter(blogRecyclerAdapter);
                 blogRecyclerAdapter.notifyDataSetChanged();
+
+
+
             }
 
             @Override
@@ -167,7 +185,8 @@ import java.util.List;
     }
     public void clickmap(View v)
     {
-        Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
+        Intent main=new Intent(MainActivity.this,universitymap.class);
+        startActivity(main);
     }
     public void clickclub(View v)
     {

@@ -50,10 +50,8 @@ package com.theworkingbros.ak.assist.Activities;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
-        import android.widget.ImageButton;
         import android.widget.TextView;
 
-        import com.google.android.gms.tasks.OnSuccessListener;
         import com.google.firebase.auth.FirebaseAuth;
         import com.google.firebase.auth.FirebaseUser;
         import com.google.firebase.database.DataSnapshot;
@@ -63,7 +61,6 @@ package com.theworkingbros.ak.assist.Activities;
         import com.google.firebase.database.ValueEventListener;
         import com.google.firebase.storage.FirebaseStorage;
         import com.google.firebase.storage.StorageReference;
-        import com.google.firebase.storage.UploadTask;
         import com.theworkingbros.ak.assist.Model.Blog;
         import com.theworkingbros.ak.assist.R;
 
@@ -71,7 +68,6 @@ package com.theworkingbros.ak.assist.Activities;
         import java.util.Map;
 
 public class Addpostwoimg extends AppCompatActivity {
-    private ImageButton postimg;
     public String user,uid;
 
     TextView username;
@@ -82,14 +78,12 @@ public class Addpostwoimg extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private StorageReference mStorage;
     private ProgressDialog mProgress;
-    private static final int Gallery_code = 1;
 
-    private Uri ImageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addpost);
+        setContentView(R.layout.activity_addpostwoimg);
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mUser = mAuth.getCurrentUser();
@@ -101,10 +95,17 @@ public class Addpostwoimg extends AppCompatActivity {
         postdesc = findViewById(R.id.post_desclistt);
         submitbtn = findViewById(R.id.submitt);
         username=findViewById(R.id.usernameid);
+        addimg=findViewById(R.id.addimagebtn);
         uid= mUser.getUid();
         final Blog blog=new  Blog();
 
-
+        addimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pastimg=new Intent(Addpostwoimg.this,Addpost.class);
+                startActivity(pastimg);
+            }
+        });
 
         userref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -131,15 +132,7 @@ public class Addpostwoimg extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Gallery_code && resultCode == RESULT_OK) {
-            ImageUri = data.getData();
-            postimg.setImageURI(ImageUri);
 
-        }
-    }
     /////////////////////////////////////////////////////////////
 
 

@@ -128,12 +128,13 @@ public class Register extends AppCompatActivity {
                                 imagepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        Uri downloadurl= taskSnapshot.getDownloadUrl();
 
                                         String userid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                                         DatabaseReference currentuserdb = mDatabaseRef.child(userid);
                                         currentuserdb.child("name").setValue(username);
                                         currentuserdb.child("email").setValue(em);
-                                        currentuserdb.child("image").setValue(resultUri.toString());
+                                        currentuserdb.child("image").setValue(downloadurl.toString());
                                         currentuserdb.child("register").setValue(reg);
 
                                         mProgressDialog.dismiss();

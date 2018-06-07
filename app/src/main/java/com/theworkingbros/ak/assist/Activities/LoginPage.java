@@ -2,6 +2,7 @@ package com.theworkingbros.ak.assist.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,6 +22,7 @@ public class LoginPage extends AppCompatActivity {
  private Button registerbtn,loginbtn;
  private FirebaseUser mUser;
  private FirebaseAuth mAuth;
+// private ConstraintLayout layout;
  private FirebaseAuth.AuthStateListener mAuthListener;
  private EditText email,password;
     @Override
@@ -30,9 +32,11 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
         loginbtn=findViewById(R.id.loginbtn);
         registerbtn=findViewById(R.id.registerbtn);
+      //  layout=findViewById(R.id.layout);
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
         mAuth=FirebaseAuth.getInstance();
+        //layout.setAlpha((float) 0.4);
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

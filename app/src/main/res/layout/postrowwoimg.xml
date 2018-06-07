@@ -3,10 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
+    android:background="#ffffff"
     android:layout_margin="5dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:orientation="vertical">
 
         <TextView
@@ -15,6 +17,7 @@
             android:layout_height="wrap_content"
             android:text="Username"
             android:textColor="#000000"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -24,22 +27,26 @@
             android:padding="10dp"
             android:text="Post Title"
             android:textSize="18sp"
+            android:textColor="#000000"
             android:textStyle="bold" />
 
 
         <TextView
             android:id="@+id/post_text"
+            android:autoLink="web"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Post Description here"
+            android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/timestamp"
             android:padding="5dp"
+            android:textColor="#212121"
             android:textStyle="italic"
             android:text="Date Created:"/>
 

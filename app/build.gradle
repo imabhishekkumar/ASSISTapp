@@ -47,6 +47,8 @@ dependencies {
     implementation 'com.soundcloud.android:android-crop:1.0.1@aar'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.commit451:PhotoView:1.2.4'
 }
 
 apply plugin: 'com.google.gms.google-services'

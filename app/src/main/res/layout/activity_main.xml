@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:fastScrollEnabled="true">
 
 
 
@@ -26,13 +27,14 @@
         android:id="@+id/sublayout"
         android:layout_width="match_parent"
         android:layout_height="159dp"
-
+        android:background="#212121"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/avatarpic"
             android:layout_width="96dp"
             android:layout_height="121dp"
@@ -42,7 +44,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/avatar" />
+            app:srcCompat="@drawable/avatar"
+
+            />
 
         <TextView
             android:id="@+id/greeting"
@@ -54,7 +58,7 @@
             android:gravity="center_vertical"
             android:text="Welcome"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#F5F5F5"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -270,6 +274,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:background="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
