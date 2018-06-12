@@ -36,23 +36,29 @@ public class LoginPage extends AppCompatActivity {
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
         mAuth=FirebaseAuth.getInstance();
+        mUser=mAuth.getCurrentUser();
         //layout.setAlpha((float) 0.4);
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                mUser=firebaseAuth.getCurrentUser();
+                //mUser=firebaseAuth.getCurrentUser();
 
-                if(mUser!=null)
-                {
-                    Toast.makeText(LoginPage.this,"Signed In",Toast.LENGTH_LONG).show();
-                    Intent main=new Intent(LoginPage.this,MainActivity.class);
-                    startActivity(main);
-                    finish();
+                    if (mUser != null&& mUser.isEmailVerified()) {
+
+                        Toast.makeText(LoginPage.this, "Signed In", Toast.LENGTH_LONG).show();
+                        Intent main = new Intent(LoginPage.this, MainActivity.class);
+                        startActivity(main);
+                        finish();
+
+
+                    }else if(mUser != null&& !mUser.isEmailVerified()){
+                        Intent main = new Intent(LoginPage.this, emailverify.class);
+                        startActivity(main);
                 }
-                else
-                {
-                    Toast.makeText(LoginPage.this,"Not Signed In",Toast.LENGTH_LONG).show();
-                }
+                    else {
+                        Toast.makeText(LoginPage.this, "Not Signed In", Toast.LENGTH_LONG).show();
+                    }
+
             }
         };
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -61,9 +67,11 @@ public class LoginPage extends AppCompatActivity {
                 if(!TextUtils.isEmpty(email.getText().toString())&&
                         !TextUtils.isEmpty(password.getText().toString()))
                 {
-                    String emailid= email.getText().toString();
-                    String pwd=password.getText().toString();
-                    login(emailid,pwd);
+
+                        String emailid = email.getText().toString();
+                        String pwd = password.getText().toString();
+                        login(emailid, pwd);
+
                 }
                 else
                 {
@@ -84,22 +92,33 @@ public class LoginPage extends AppCompatActivity {
         }
 
     private void login(String emailid, String pwd) {
-        mAuth.signInWithEmailAndPassword(emailid,pwd)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(LoginPage.this,"Signed In",Toast.LENGTH_LONG).show();
-                            Intent login=new Intent(LoginPage.this,MainActivity.class);
-                            startActivity(login);
-                            finish();
-                        }
-                        else{
+        mUser=FirebaseAuth.getInstance().getCurrentUser();
+
+            mAuth.signInWithEmailAndPassword(emailid, pwd)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+
+
+                                Toast.makeText(LoginPage.this, "Signed In", Toast.LENGTH_SHORT).show();
+                                Intent login = new Intent(LoginPage.this, emailverify.class);
+                                startActivity(login);
+                                finish();
+                            }
+                          /*  else if(task.isSuccessful()&& !mUser.isEmailVerified()){
                             Toast.makeText(LoginPage.this,"Unsuccessful",Toast.LENGTH_LONG).show();
+                            Intent login=new Intent(LoginPage.this,emailverify.class);
+                            startActivity(login);
                         }
-                    }
-                });
-    }
+*/
+                            else {
+                                Toast.makeText(LoginPage.this, "Failed to Login.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+
 
 
 

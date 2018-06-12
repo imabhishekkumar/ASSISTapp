@@ -3,6 +3,7 @@ package com.theworkingbros.ak.assist.Activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,8 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +42,9 @@ public class Register extends AppCompatActivity {
     public DatabaseReference mDatabaseRef;
     public FirebaseDatabase mDataBase;
     private StorageReference mFirebaseStorage;
+
     private FirebaseAuth mAuth;
+
     String usern;
 
     private ProgressDialog mProgressDialog;
@@ -52,7 +58,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
+//        user = mAuth.getCurrentUser();
         login = findViewById(R.id.login);
         registerbtn = findViewById(R.id.registerbtn);
         email = findViewById(R.id.email);
@@ -65,6 +71,7 @@ public class Register extends AppCompatActivity {
         mDataBase = FirebaseDatabase.getInstance();
         mDatabaseRef = mDataBase.getReference().child("AssistUsers");
         mAuth = FirebaseAuth.getInstance();
+
 
         mProgressDialog = new ProgressDialog(this);
 
@@ -85,10 +92,19 @@ public class Register extends AppCompatActivity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                createNewAccount();
+                final String username = name.getText().toString().trim();
+                final String em = email.getText().toString().trim();
+                final String reg = registernumber.getText().toString().trim();
+                final String pwd = password.getText().toString().trim();
+                if (!TextUtils.isEmpty(username) &&
+                        !TextUtils.isEmpty(em) &&
+                        !TextUtils.isEmpty(reg) &&
+                        !TextUtils.isEmpty(pwd)) {
+               createNewAccount();
                 finish();
-            }
+
+            }else
+            Toast.makeText(Register.this,"Invalid Details",Toast.LENGTH_SHORT).show();}
         });
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -102,19 +118,20 @@ public class Register extends AppCompatActivity {
         });
     }
 
+
     private void createNewAccount() {
         final String username = name.getText().toString().trim();
         final String em = email.getText().toString().trim();
         final String reg = registernumber.getText().toString().trim();
-        final String pwd = password.getText().toString().trim();
-
+         String pwd = password.getText().toString().trim();
+        try{
         if (!TextUtils.isEmpty(username) &&
                 !TextUtils.isEmpty(em) &&
                 !TextUtils.isEmpty(reg) &&
-                !TextUtils.isEmpty(pwd))
-        {
+                !TextUtils.isEmpty(pwd)) {
             mProgressDialog.setMessage("Creating account..");
             mProgressDialog.show();
+
             mAuth.createUserWithEmailAndPassword(em, pwd)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
@@ -128,7 +145,7 @@ public class Register extends AppCompatActivity {
                                 imagepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        Uri downloadurl= taskSnapshot.getDownloadUrl();
+                                        Uri downloadurl = taskSnapshot.getDownloadUrl();
 
                                         String userid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                                         DatabaseReference currentuserdb = mDatabaseRef.child(userid);
@@ -136,27 +153,35 @@ public class Register extends AppCompatActivity {
                                         currentuserdb.child("email").setValue(em);
                                         currentuserdb.child("image").setValue(downloadurl.toString());
                                         currentuserdb.child("register").setValue(reg);
+                                        currentuserdb.child("verified").setValue("false");
+                                        currentuserdb.child("about").setValue("");
+
 
                                         mProgressDialog.dismiss();
 
-                                        Intent intent = new Intent(Register.this, MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+
+                                        Intent intent = new Intent(Register.this, emailverify.class);
+                                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
+                                        //finish();
+
 
                                     }
 
 
                                 });
 
-                            }
-                        }
+                            }}
+
+
 
 
                     });
         }
 
-
-            }
+    }catch(Exception e){}}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -176,11 +201,16 @@ public class Register extends AppCompatActivity {
 
                 avatar.setImageURI(resultUri);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
+                //Exception error = result.getError();
+                Toast.makeText(Register.this,"Error",Toast.LENGTH_SHORT).show();
 
             }
         }
         }
-
+    @Override
+    protected void onDestroy() {
+        mProgressDialog.dismiss();
+        super.onDestroy();
+    }
 
     }

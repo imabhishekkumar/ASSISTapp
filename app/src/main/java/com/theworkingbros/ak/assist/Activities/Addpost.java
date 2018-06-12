@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
 
@@ -42,6 +45,7 @@ public class Addpost extends AppCompatActivity {
     private StorageReference mStorage;
     private ProgressDialog mProgress;
     private static final int Gallery_code = 1;
+    private final static int gallerycode = 1;
 
     private Uri ImageUri;
 
@@ -100,7 +104,7 @@ public class Addpost extends AppCompatActivity {
     }
 
 
-    @Override
+ /*   @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Gallery_code && resultCode == RESULT_OK) {
@@ -108,7 +112,7 @@ public class Addpost extends AppCompatActivity {
             postimg.setImageURI(ImageUri);
 
         }
-    }
+    }*/
     /////////////////////////////////////////////////////////////
 
 
@@ -159,5 +163,28 @@ public class Addpost extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK && requestCode==gallerycode){
+            Uri mImageUri= data.getData();
+            CropImage.activity(mImageUri)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .start(Addpost.this);
+
+        }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                ImageUri = result.getUri();
+
+                postimg.setImageURI(ImageUri);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                //Exception error = result.getError();
+                Toast.makeText(Addpost.this,"Error",Toast.LENGTH_SHORT).show();
+
+            }
+        }
     }
 }

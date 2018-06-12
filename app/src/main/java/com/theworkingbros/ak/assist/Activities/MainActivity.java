@@ -1,5 +1,6 @@
 package com.theworkingbros.ak.assist.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -36,14 +37,19 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
-    public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     ImageButton cgpa,cal,map,club;
-    TextView greeting;
+    ImageView verified;
+    TextView greeting,about,announce;
     String name,uid,imgurl;
-    ImageView avatar;
-    private DatabaseReference mDatabasereference,mdbref;
+    CircleImageView avatar;
+
+    private DatabaseReference mDatabasereference,mdbref,announceDB;
     private FirebaseDatabase mDatabase;
     private RecyclerView recyclerView;
     private BlogRecyclerAdapter blogRecyclerAdapter;
@@ -58,14 +64,19 @@ import java.util.List;
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+        announce=findViewById(R.id.announce);
         mDatabase = FirebaseDatabase.getInstance();
+        announceDB = mDatabase.getReference().child("Announcement");
+        announceDB.keepSynced(true);
         mDatabasereference = mDatabase.getReference().child("AssistBlog");
         mDatabasereference.keepSynced(true);
+
         mdbref=mDatabase.getReference().child("AssistUsers");
         mdbref.keepSynced(true);
         avatar=findViewById(R.id.avatarpic);
         cgpa = findViewById(R.id.cgpa);
         map = findViewById(R.id.map);
+        verified=findViewById(R.id.verify);
         bloglist = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -74,13 +85,38 @@ import java.util.List;
         cal = findViewById(R.id.cal);
         greeting = findViewById(R.id.greeting);
         uid=mUser.getUid();
-        final Blog blog=new Blog();
+        about = findViewById(R.id.about);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading from database");
+        progressDialog.show();
+        //progressDialog.dismiss();
+       // final Blog blog=new Blog();
+        announceDB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                announce.setText(dataSnapshot.child("announce").getValue(String.class));
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                progressDialog.dismiss();
+            }
+        });
 
         mdbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 name= dataSnapshot.child(uid).child("name").getValue(String.class);
+
+
                 greeting.setText(getString(R.string.welcome)+name);
+                about.setText(dataSnapshot.child(uid).child("about").getValue(String.class));
+                if(Objects.equals(dataSnapshot.child(uid).child("verified").getValue(String.class), "true"))
+                {
+                    verified.setVisibility(View.VISIBLE);
+                }
+
                 imgurl=dataSnapshot.child(uid).child("image").getValue(String.class);
                 Picasso
                         .with(MainActivity.this)
@@ -135,6 +171,7 @@ import java.util.List;
     @Override
     protected void onStart() {
         super.onStart();
+
         mDatabasereference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -182,16 +219,19 @@ import java.util.List;
     public void clickcgpa(View v){
         Intent main=new Intent(MainActivity.this,CGPA.class);
         startActivity(main);
+        finish();
     }
     public void clickmap(View v)
     {
         Intent main=new Intent(MainActivity.this,universitymap.class);
         startActivity(main);
+        finish();
     }
     public void clickclub(View v)
     {
         Intent main=new Intent(MainActivity.this,club.class);
         startActivity(main);
+        finish();
     }
     public void clickcal(View v)
     {
@@ -199,18 +239,23 @@ import java.util.List;
     }
 
     public void libbtn(View v)
-    {
-        Intent main=new Intent(MainActivity.this,library.class);
-        startActivity(main);
+    {Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
+       /* Intent main=new Intent(MainActivity.this,library.class);
+        startActivity(main);*/
     }
     public void dowbtn(View v)
-    { Intent main=new Intent(MainActivity.this,CourseMaterial.class );
-      startActivity(main);
+    { /*Intent main=new Intent(MainActivity.this,CourseMaterial.class );
+      startActivity(main);*/
 
-
+        Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
 
     }
 
-
+    public void sublayout(View v)
+    {
+        Intent main=new Intent(MainActivity.this,Userprofile.class);
+        startActivity(main);
+        finish();
+    }
     }
 
