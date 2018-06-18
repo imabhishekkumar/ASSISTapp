@@ -162,5 +162,11 @@ catch (Exception e){}
             }
         }
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Userprofile.this,MainActivity.class));
+        super.onBackPressed();
+    }
 }
 

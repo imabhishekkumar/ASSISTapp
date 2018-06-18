@@ -47,7 +47,7 @@ public class Register extends AppCompatActivity {
 
     String usern;
 
-    private ProgressDialog mProgressDialog;
+    ProgressDialog mProgressDialog;
     private Uri resultUri = null;
     private final static int gallerycode = 1;
 
@@ -57,7 +57,7 @@ public class Register extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        mProgressDialog = new ProgressDialog(this);
 //        user = mAuth.getCurrentUser();
         login = findViewById(R.id.login);
         registerbtn = findViewById(R.id.registerbtn);
@@ -73,7 +73,7 @@ public class Register extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        mProgressDialog = new ProgressDialog(this);
+
 
 
         avatar.setOnClickListener(new View.OnClickListener() {
@@ -99,12 +99,12 @@ public class Register extends AppCompatActivity {
                 if (!TextUtils.isEmpty(username) &&
                         !TextUtils.isEmpty(em) &&
                         !TextUtils.isEmpty(reg) &&
-                        !TextUtils.isEmpty(pwd)) {
+                        !TextUtils.isEmpty(pwd)&& resultUri!=null){
                createNewAccount();
                 finish();
 
             }else
-            Toast.makeText(Register.this,"Invalid Details",Toast.LENGTH_SHORT).show();}
+            Toast.makeText(Register.this,"Invalid Details/Add image",Toast.LENGTH_SHORT).show();}
         });
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -155,16 +155,16 @@ public class Register extends AppCompatActivity {
                                         currentuserdb.child("register").setValue(reg);
                                         currentuserdb.child("verified").setValue("false");
                                         currentuserdb.child("about").setValue("");
-
-
                                         mProgressDialog.dismiss();
 
 
 
 
+
                                         Intent intent = new Intent(Register.this, emailverify.class);
-                                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
+
                                         //finish();
 
 
@@ -180,6 +180,7 @@ public class Register extends AppCompatActivity {
 
                     });
         }
+
 
     }catch(Exception e){}}
 
@@ -206,6 +207,7 @@ public class Register extends AppCompatActivity {
 
             }
         }
+
         }
     @Override
     protected void onDestroy() {

@@ -1,5 +1,6 @@
 package com.theworkingbros.ak.assist.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -58,6 +59,10 @@ public class CGPA extends AppCompatActivity {
         sp7 = findViewById(R.id.sp7);
         sp8 = findViewById(R.id.sp8);
         sp9 = findViewById(R.id.sp9);
+
+
+
+
 
         String[] items = new String[]{"100", "50"};
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -182,6 +187,12 @@ public class CGPA extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(CGPA.this,MainActivity.class));
+        super.onBackPressed();
     }
 }
 

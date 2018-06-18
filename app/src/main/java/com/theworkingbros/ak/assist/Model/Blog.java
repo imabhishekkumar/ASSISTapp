@@ -7,19 +7,20 @@ public class Blog {
     public String timestamp;
     public String userid;
     public String username;
-
+    public String uniqueid;
     public Blog()
     {
 
     }
 
-    public Blog(String title, String desc, String image, String timestamp, String userid,String username ) {
+    public Blog(String title, String desc, String image, String timestamp, String userid,String username,String uniqueid ) {
         this.title = title;
         this.desc = desc;
         this.image = image;
         this.timestamp = timestamp;
         this.userid = userid;
         this.username=username;
+        this.uniqueid=uniqueid;
     }
 
     public String getTitle() {
@@ -68,5 +69,12 @@ public class Blog {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+    public String getUniqueid() {
+        return uniqueid;
+    }
+
+    public void setUniqueid(String uniqueid) {
+        this.uniqueid = uniqueid;
     }
 }

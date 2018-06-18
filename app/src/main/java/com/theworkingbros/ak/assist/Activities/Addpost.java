@@ -29,16 +29,18 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Addpost extends AppCompatActivity {
     private ImageButton postimg;
-    public String user,uid;
+    public String user,uid,parent;
 
     TextView username;
     private EditText posttitle, postdesc;
-    private Button submitbtn;
+    private Button submitbtn,addimg;
     private DatabaseReference mPostDatabase,userref;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
@@ -47,7 +49,7 @@ public class Addpost extends AppCompatActivity {
     private static final int Gallery_code = 1;
     private final static int gallerycode = 1;
 
-    private Uri ImageUri;
+    private Uri ImageUri=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,26 +58,34 @@ public class Addpost extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mUser = mAuth.getCurrentUser();
+        addimg=findViewById(R.id.addimg);
         mStorage = FirebaseStorage.getInstance().getReference();
         mPostDatabase = FirebaseDatabase.getInstance().getReference().child("AssistBlog");
         userref= FirebaseDatabase.getInstance().getReference().child("AssistUsers");
         userref.keepSynced(true);
         postimg = findViewById(R.id.post_image);
-        posttitle = findViewById(R.id.post_titlelistt);
-        postdesc = findViewById(R.id.post_desclistt);
+        posttitle = findViewById(R.id.postview_titlelistt);
+        postdesc = findViewById(R.id.postview_desclistt);
         submitbtn = findViewById(R.id.submitt);
         username=findViewById(R.id.usernameid);
         uid= mUser.getUid();
         final Blog blog=new  Blog();
+        blog.setUserid(uid);
 
-
-
+        addimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                postimg.setVisibility(View.VISIBLE);
+                addimg.setVisibility(View.GONE);
+            }
+        });
         userref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user= dataSnapshot.child(uid).child("name").getValue(String.class);
                 username.setText(user);
                 blog.setUsername(user);
+
 
             }
 
@@ -127,31 +137,72 @@ public class Addpost extends AppCompatActivity {
         final String titleVal = posttitle.getText().toString().trim();
         final String desVal = postdesc.getText().toString().trim();
 
+
         if (!TextUtils.isEmpty(titleVal) && !TextUtils.isEmpty(desVal)) {
 
 
+            if (ImageUri == null) {
+                if (!TextUtils.isEmpty(titleVal) && !TextUtils.isEmpty(desVal)) {
 
-            if(ImageUri==null)
-            {
+               /* StorageReference filepath= mStorage.child("Assist_Images").child(ImageUri.getLastPathSegment());
+                filepath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Uri downloadurl= taskSnapshot.getDownloadUrl();
+                 */
+                    DatabaseReference newPost = mPostDatabase.push();
+                    Map<String, String> dataToSave = new HashMap<>();
+                    //  java.text.DateFormat dateFormat= java.text.DateFormat.getDateInstance();
+                    long yourmilliseconds = System.currentTimeMillis();
+                    SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+                    Date resultdate = new Date(yourmilliseconds);
+                    //System.out.println();
+                    String formatteddate = sdf.format(resultdate);
+                    final String uniqueid = (mUser.getUid() + formatteddate);
+                    dataToSave.put("title", titleVal);
+                    dataToSave.put("desc", desVal);
+                    dataToSave.put("timestamp", formatteddate);//String.valueOf(java.lang.System.currentTimeMillis()));
+                    dataToSave.put("userid", mUser.getUid());
+                    dataToSave.put("username", user);
+                    dataToSave.put(uniqueid, uniqueid);
+                    newPost.setValue(dataToSave);
+                    mProgress.dismiss();
+                    startActivity(new Intent(Addpost.this, MainActivity.class));
+                    finish();
 
+
+                }
             }
-            else
-                {
-                    StorageReference filepath= mStorage.child("Assist_Images").child(ImageUri.getLastPathSegment());
+                else {
+                if (!TextUtils.isEmpty(titleVal) && !TextUtils.isEmpty(desVal)) {
+                    StorageReference filepath = mStorage.child("Assist_Images").child(ImageUri.getLastPathSegment());
                     filepath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri downloadurl= taskSnapshot.getDownloadUrl();
-                            DatabaseReference newPost= mPostDatabase.push();
-                            Map<String,String> dataToSave= new HashMap<>();
-                            dataToSave.put("title",titleVal);
-                            dataToSave.put("desc",desVal);
-                            dataToSave.put("image",downloadurl.toString());
-                            dataToSave.put("timestamp",String.valueOf(java.lang.System.currentTimeMillis()));
-                            dataToSave.put("userid",mUser.getUid());
-                            dataToSave.put("username",user);
+                            Uri downloadurl = taskSnapshot.getDownloadUrl();
+                            DatabaseReference newPost = mPostDatabase.push();
+                            java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
+                            String formatteddate = dateFormat.format(new Date(Long.valueOf(String.valueOf(java.lang.System.currentTimeMillis()))));
+                            final String uniqueid = (mUser.getUid() + formatteddate);
+                            Map<String, String> dataToSave = new HashMap<>();
+                            dataToSave.put("title", titleVal);
+                            dataToSave.put("desc", desVal);
+                            dataToSave.put("image", downloadurl.toString());
+                            dataToSave.put("timestamp", formatteddate);//String.valueOf(java.lang.System.currentTimeMillis()));
+                            dataToSave.put("userid", mUser.getUid());
+                            dataToSave.put("username", user);
+                            dataToSave.put(uniqueid, uniqueid);
                             newPost.setValue(dataToSave);
-                            mProgress.dismiss();
+                         /* Blog blog=new  Blog();
+                            blog.setUniqueid(uniqueid);*/
+
+                       /*   newPost.child("title").setValue(titleVal);
+                            newPost.child("desc").setValue(desVal);
+                            newPost.child("image").setValue(downloadurl.toString());
+                            newPost.child("timestamp").setValue(String.valueOf(java.lang.System.currentTimeMillis()));
+                            newPost.child("userid").setValue(mUser.getUid());
+                            newPost.child("username").setValue(user);
+                            mProgress.dismiss();*/
                             startActivity(new Intent(Addpost.this, MainActivity.class));
                             finish();
 
@@ -161,8 +212,7 @@ public class Addpost extends AppCompatActivity {
             }
 
 
-
-
+        }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

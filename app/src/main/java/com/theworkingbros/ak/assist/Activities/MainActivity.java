@@ -2,7 +2,6 @@ package com.theworkingbros.ak.assist.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,20 +21,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theworkingbros.ak.assist.Data.BlogRecyclerAdapter;
-import com.theworkingbros.ak.assist.Data.BlogRecyclerAdapterwoimg;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
 
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -56,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Blog> bloglist;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
-    private BlogRecyclerAdapterwoimg blogRecyclerAdapterwoimg;
+  //  private BlogRecyclerAdapterwoimg blogRecyclerAdapterwoimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +126,49 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        mDatabasereference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Blog blog=dataSnapshot.getValue(Blog.class);
+
+                bloglist.add(blog);
+                Collections.reverse(bloglist);
+                /////////////////////////////////////////////
+               /* blogRecyclerAdapterwoimg= new BlogRecyclerAdapterwoimg(MainActivity.this,bloglist);
+                recyclerView.setAdapter(blogRecyclerAdapterwoimg);
+                blogRecyclerAdapterwoimg.notifyDataSetChanged();*/
+
+                ////////////////////////////////////////////////////
+
+                blogRecyclerAdapter= new BlogRecyclerAdapter(MainActivity.this,bloglist);
+                recyclerView.setAdapter(blogRecyclerAdapter);
+                blogRecyclerAdapter.notifyDataSetChanged();
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         //////////////////////////////////////////////////////
     }
@@ -141,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()) {
             case R.id.action_add:
                 if (mUser != null && mAuth != null) {
-                    Intent post = new Intent(MainActivity.this, Addpostwoimg.class);
+                    Intent post = new Intent(MainActivity.this, Addpost.class);
                     startActivity(post);
                     finish();
                 }
@@ -162,16 +199,34 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mainmenu,menu);
         return super.onCreateOptionsMenu(menu);
     }
+    @Override
+    protected void onResume() {
 
+        super.onResume();
+    }
     @Override
     protected void onStart() {
         super.onStart();
+    /*    FirebaseRecyclerAdapter<MainActivity,BlogViewHolder> FBRA= new FirebaseRecyclerAdapter<MainActivity, BlogViewHolder>(
+                MainActivity.class,
+                R.layout.postrow,
+                BlogViewHolder.class,
+                mDatabasereference
+        ) {
+            @Override
+            protected void populateViewHolder(BlogViewHolder viewHolder, MainActivity model, int position) {
+                viewHolder.setTitle(model.getTitle());
 
+            }
+        };
+        recyclerView.setAdapter(FBRA);*/
+/*
         mDatabasereference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -213,25 +268,25 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
         }
 
     public void clickcgpa(View v){
         Intent main=new Intent(MainActivity.this,CGPA.class);
         startActivity(main);
-        finish();
+
     }
     public void clickmap(View v)
     {
         Intent main=new Intent(MainActivity.this,universitymap.class);
         startActivity(main);
-        finish();
+
     }
     public void clickclub(View v)
     {
         Intent main=new Intent(MainActivity.this,club.class);
         startActivity(main);
-        finish();
+
     }
     public void clickcal(View v)
     {
@@ -255,7 +310,25 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent main=new Intent(MainActivity.this,Userprofile.class);
         startActivity(main);
-        finish();
-    }
+
+    }/*
+  public static class BlogViewHolder extends RecyclerView.ViewHolder{
+        public BlogViewHolder(View itemView){
+            super(itemView);
+            View mView=itemView;
+        }
+        public void setTitle(String s){
+            TextView posttitle=itemView.findViewById(R.id.postview_titlelistt);
+            posttitle.setText(s);
+        }
+      public void setDesc(String s){
+          TextView postdesc=itemView.findViewById(R.id.post_text);
+          postdesc.setText(s);
+      }
+
+
+
+    }*/
+
     }
 

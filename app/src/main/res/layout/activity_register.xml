@@ -31,14 +31,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textColorHint="#ffffff"
-        android:textColor="#ffffff"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatarpic" />
+        app:layout_constraintTop_toBottomOf="@+id/post_userid" />
 
     <EditText
         android:id="@+id/email"
@@ -129,4 +129,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
         app:srcCompat="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/post_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Tap on the avatar to add your own"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="@+id/avatarpic"
+        app:layout_constraintStart_toStartOf="@+id/avatarpic"
+        app:layout_constraintTop_toBottomOf="@+id/avatarpic" />
 </android.support.constraint.ConstraintLayout>

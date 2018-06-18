@@ -9,25 +9,29 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="189dp"
-        android:layout_height="47dp"
+        android:layout_width="118dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/verify"
+        app:layout_constraintHorizontal_bias="0.283"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/verify"
-        android:layout_width="184dp"
-        android:layout_height="wrap_content"
+        android:layout_width="148dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="8dp"
         android:text="Check Verification"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/login"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView16"

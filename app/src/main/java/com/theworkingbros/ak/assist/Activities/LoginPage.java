@@ -45,7 +45,7 @@ public class LoginPage extends AppCompatActivity {
 
                     if (mUser != null&& mUser.isEmailVerified()) {
 
-                        Toast.makeText(LoginPage.this, "Signed In", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(LoginPage.this, "Signed In", Toast.LENGTH_LONG).show();
                         Intent main = new Intent(LoginPage.this, MainActivity.class);
                         startActivity(main);
                         finish();
@@ -56,7 +56,7 @@ public class LoginPage extends AppCompatActivity {
                         startActivity(main);
                 }
                     else {
-                        Toast.makeText(LoginPage.this, "Not Signed In", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(LoginPage.this, "Not Signed In", Toast.LENGTH_LONG).show();
                     }
 
             }
@@ -101,7 +101,7 @@ public class LoginPage extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
 
-                                Toast.makeText(LoginPage.this, "Signed In", Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(LoginPage.this, "Signed In", Toast.LENGTH_SHORT).show();
                                 Intent login = new Intent(LoginPage.this, emailverify.class);
                                 startActivity(login);
                                 finish();

@@ -16,19 +16,20 @@
 
     <ImageButton
         android:id="@+id/post_image"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="263dp"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
-        android:cropToPadding="false"
+        android:scaleType="centerCrop"
         android:src="@drawable/addimg"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_titlelistt" />
+        app:layout_constraintTop_toBottomOf="@+id/postview_titlelistt" />
 
     <EditText
-        android:id="@+id/post_titlelistt"
+        android:id="@+id/postview_titlelistt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -42,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameid" />
 
     <EditText
-        android:id="@+id/post_desclistt"
+        android:id="@+id/postview_desclistt"
         android:autoLink="web"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,8 +63,21 @@
         android:layout_marginTop="8dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_desclistt" />
+        app:layout_constraintTop_toBottomOf="@+id/addimg" />
+
+    <Button
+        android:id="@+id/addimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Add image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postview_desclistt" />
 
     <TextView
         android:id="@+id/usernameid"
