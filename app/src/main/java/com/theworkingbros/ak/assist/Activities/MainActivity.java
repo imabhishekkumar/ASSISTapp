@@ -193,6 +193,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                 break;
+            case R.id.action_changepassword:
+                if (mUser != null && mAuth != null) {
+                    Intent post = new Intent(MainActivity.this, changePassword.class);
+                    startActivity(post);
+                    break;
+                }
 
         }
 

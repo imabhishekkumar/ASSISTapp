@@ -3,7 +3,6 @@ package com.theworkingbros.ak.assist.Data;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,22 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theworkingbros.ak.assist.Activities.PostView;
-import com.theworkingbros.ak.assist.Activities.PostViewwoimg;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
 
-import java.io.ByteArrayOutputStream;
-import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapter.ViewHolder> {
 
@@ -43,6 +36,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
+    FirebaseAuth mAuth;
 
 
 
@@ -69,6 +63,10 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         holder.desc.setText(blog.getDesc());
         holder.username.setText(blog.getUsername());
         holder.userid.setText(blog.getUserid());
+      /*  if(Objects.equals(dataSnapshot.child(uid).child("verified").getValue(String.class), "true"))
+        {
+            verified.setVisibility(View.VISIBLE);
+        }*/
 
 
      //   java.text.DateFormat dateFormat= java.text.DateFormat.getDateInstance();

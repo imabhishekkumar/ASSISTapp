@@ -45,7 +45,7 @@
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="2dp"
 
                 android:padding="10dp"
                 android:text="added a new post"
@@ -103,7 +103,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="userposted"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:visibility="gone" />
 
 
 

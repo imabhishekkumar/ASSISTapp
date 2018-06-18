@@ -182,9 +182,15 @@ public class Addpost extends AppCompatActivity {
                             Uri downloadurl = taskSnapshot.getDownloadUrl();
                             DatabaseReference newPost = mPostDatabase.push();
                             java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
-                            String formatteddate = dateFormat.format(new Date(Long.valueOf(String.valueOf(java.lang.System.currentTimeMillis()))));
-                            final String uniqueid = (mUser.getUid() + formatteddate);
+                          //  String formatteddate = dateFormat.format(new Date(Long.valueOf(String.valueOf(java.lang.System.currentTimeMillis()))));
+                           // final String uniqueid = (mUser.getUid() + formatteddate);
                             Map<String, String> dataToSave = new HashMap<>();
+                            long yourmilliseconds = System.currentTimeMillis();
+                            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+                            Date resultdate = new Date(yourmilliseconds);
+                            String formatteddate = sdf.format(resultdate);
+                            final String uniqueid = (mUser.getUid() + formatteddate);
+                           // Date resultdate = new Date(yourmilliseconds);
                             dataToSave.put("title", titleVal);
                             dataToSave.put("desc", desVal);
                             dataToSave.put("image", downloadurl.toString());
