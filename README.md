@@ -16,3 +16,7 @@ This application was made implemention the following:
 3. Firebase Storage
 4. Picasso Library
 
+------------------------------------------------------------------------------------------------------------------------------------
+
+Get it on Google Play Store: https://play.google.com/store/apps/details?id=com.theworkingbros.ak.assist
+
