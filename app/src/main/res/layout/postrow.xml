@@ -15,8 +15,8 @@
         android:orientation="vertical">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="390dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingStart="10dp">
 
             <TextView
@@ -36,7 +36,7 @@
                 android:layout_height="15dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@+id/usernameTV"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/verified" />
@@ -63,6 +63,7 @@
             android:padding="10dp"
             android:text="Post Title"
             android:textColor="#000000"
+            android:textIsSelectable="true"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -84,6 +85,7 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:padding="10dp"
+            android:textIsSelectable="true"
             android:text="Post Description here"
             android:textColor="#000000"
             android:textSize="18sp" />

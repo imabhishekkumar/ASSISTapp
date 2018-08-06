@@ -75,6 +75,9 @@ public class Addpost extends AppCompatActivity {
         addimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent gallery = new Intent(Intent.ACTION_GET_CONTENT);
+                gallery.setType("image/*");
+                startActivityForResult(gallery, Gallery_code);
                 postimg.setVisibility(View.VISIBLE);
                 addimg.setVisibility(View.GONE);
             }
@@ -96,14 +99,7 @@ public class Addpost extends AppCompatActivity {
         });
 
 
-        postimg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent gallery = new Intent(Intent.ACTION_GET_CONTENT);
-                gallery.setType("image/*");
-                startActivityForResult(gallery, Gallery_code);
-            }
-        });
+
 
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +157,7 @@ public class Addpost extends AppCompatActivity {
                     final String uniqueid = (mUser.getUid() + formatteddate);
                     dataToSave.put("title", titleVal);
                     dataToSave.put("desc", desVal);
+                    dataToSave.put("uniquekey", newPost.getKey());
                     dataToSave.put("timestamp", formatteddate);//String.valueOf(java.lang.System.currentTimeMillis()));
                     dataToSave.put("userid", mUser.getUid());
                     dataToSave.put("username", user);
@@ -220,6 +217,14 @@ public class Addpost extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent main= new Intent(Addpost.this, MainActivity.class);
+        startActivity(main);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

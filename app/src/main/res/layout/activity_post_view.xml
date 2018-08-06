@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECEFF1"
+    android:fastScrollEnabled="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="#ECEFF1"
     android:layout_margin="5dp"
     tools:context=".Activities.PostView">
 
@@ -48,8 +59,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColor="#000000"
             android:text="Post Title"
+            android:textIsSelectable="true"
+            android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -72,6 +84,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="#000000"
+            android:textIsSelectable="true"
             android:text="Post Description here"
             android:textSize="18sp"
             />
@@ -92,27 +105,89 @@
             android:text="Delete"
             android:textColor="#ffffff"
             android:visibility="gone" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/commentrecycleview"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:background="#ECEFF1"
             android:nestedScrollingEnabled="false"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#29B6F6"
-            android:textColor="#ffffff"
-            android:text="Reply" />
+
+
 
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:layout_margin="5dp">
+
+
+
+            <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/replyusernameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Username"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/reply"
+                    android:layout_width="401dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="8dp"
+                    android:autoLink="web"
+                    android:background="@drawable/editshape"
+                    android:inputType="textMultiLine"
+                    android:hint="Reply"
+                    android:textColor="#000000"
+                    android:textIsSelectable="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/replyusernameTV" />
+
+                <Button
+                    android:id="@+id/replybtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="#29B6F6"
+                    android:text="Reply"
+                    android:textColor="#ffffff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reply" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+
+
+
+</ScrollView>

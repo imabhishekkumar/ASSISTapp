@@ -12,9 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.theworkingbros.ak.assist.Activities.MainActivity;
 import com.theworkingbros.ak.assist.Activities.PostView;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
@@ -35,9 +40,9 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
     String imgview;
 
     FirebaseDatabase mDatabase;
-    DatabaseReference mRef;
+    DatabaseReference mRef,MUserRef;
     FirebaseAuth mAuth;
-
+    FirebaseUser mUser;
 
 
 
@@ -56,9 +61,33 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BlogRecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final BlogRecyclerAdapter.ViewHolder holder, int position) {
         Blog blog= blogList.get(position);
         String imageUrl=null;
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        uid=mUser.getUid();
+        mDatabase=FirebaseDatabase.getInstance();
+        MUserRef=mDatabase.getReference().child("AssistUsers");
+        MUserRef.keepSynced(true);
+        MUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(Objects.equals(dataSnapshot.child(uid).child("verified").getValue(String.class), "true"))
+                {
+                    holder.verified.setVisibility(View.VISIBLE);
+                }
+                else{
+                    holder.verified.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         holder.title.setText(blog.getTitle());
         holder.desc.setText(blog.getDesc());
         holder.username.setText(blog.getUsername());
@@ -95,7 +124,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         public ImageView img;
         public TextView username;
         public  TextView userid;
-
+        public ImageView verified;
 
 
 
@@ -112,6 +141,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             timestamp=view.findViewById(R.id.timestamp);
             username=view.findViewById(R.id.usernameTV);
             userid=view.findViewById(R.id.post_userid);
+            verified=view.findViewById(R.id.verifiied);
 
 
 

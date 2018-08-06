@@ -5,12 +5,13 @@
         android:icon="@drawable/add1"
         android:title="Add post"
         app:showAsAction="always"/>
+    <item android:id="@+id/action_changepassword"
+        android:title="Change Password"
+        app:showAsAction="never"
+        />
 
     <item android:id="@+id/action_signout"
         android:title="Signout"
         app:showAsAction="never"/>
-    <item android:id="@+id/action_changepassword"
-        android:title="Change Password"
-        app:showAsAction="never"
-/>
+
 </menu>

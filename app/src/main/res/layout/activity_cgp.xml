@@ -292,8 +292,8 @@
         android:background="@drawable/editshape"
         android:ems="10"
         android:hint="@string/blank"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -306,8 +306,8 @@
         android:ems="10"
         android:hint="@string/blank"
         android:background="@drawable/editshape"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g1" />
@@ -320,9 +320,9 @@
         android:ems="10"
         android:hint="@string/blank"
         android:background="@drawable/editshape"
-        android:inputType="number|numberDecimal"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
-        android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g2" />
 
@@ -334,8 +334,8 @@
         android:background="@drawable/editshape"
         android:ems="10"
         android:hint="@string/blank"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g3" />
@@ -348,8 +348,8 @@
         android:ems="10"
         android:hint="@string/blank"
         android:background="@drawable/editshape"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g4" />
@@ -362,8 +362,8 @@
         android:ems="10"
         android:background="@drawable/editshape"
         android:hint="@string/blank"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g5" />
@@ -376,8 +376,8 @@
         android:ems="10"
         android:hint="@string/blank"
         android:background="@drawable/editshape"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g6" />
@@ -391,8 +391,9 @@
         android:hint="@string/blank"
         android:textAlignment="center"
         android:background="@drawable/editshape"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
+        android:inputType="number"
+        android:maxLength="1"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g7" />
 
@@ -404,9 +405,9 @@
         android:background="@drawable/editshape"
         android:ems="10"
         android:hint="@string/blank"
+        android:inputType="number"
+        android:maxLength="1"
         android:textAlignment="center"
-        android:inputType="number|numberDecimal"
-        android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g8" />
 

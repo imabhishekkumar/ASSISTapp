@@ -50,7 +50,8 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Post Description"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
+
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +64,8 @@
         android:layout_marginTop="8dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="#00B0FF"
+        android:textColor="#ffffff"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addimg" />
@@ -73,11 +76,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:background="#00B0FF"
         android:text="Add image"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postview_desclistt" />
+
 
     <TextView
         android:id="@+id/usernameid"
