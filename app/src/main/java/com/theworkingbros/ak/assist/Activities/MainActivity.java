@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+
         announce=findViewById(R.id.announce);
         mDatabase = FirebaseDatabase.getInstance();
         announceDB = mDatabase.getReference().child("Announcement");
