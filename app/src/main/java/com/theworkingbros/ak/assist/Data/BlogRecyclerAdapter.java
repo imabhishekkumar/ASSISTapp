@@ -92,16 +92,9 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         holder.desc.setText(blog.getDesc());
         holder.username.setText(blog.getUsername());
         holder.userid.setText(blog.getUserid());
-      /*  if(Objects.equals(dataSnapshot.child(uid).child("verified").getValue(String.class), "true"))
-        {
-            verified.setVisibility(View.VISIBLE);
-        }*/
-
-
-     //   java.text.DateFormat dateFormat= java.text.DateFormat.getDateInstance();
-       // String formatteddate= dateFormat.format(new Date(Long.valueOf(blog.getTimestamp())).getTime());
+     
         holder.timestamp.setText(blog.getTimestamp());
-       // time=formatteddate;
+       
         imageUrl=blog.getImage();
         if(imageUrl!=null)
         {
@@ -149,8 +142,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //go to next activity
-                    ////
+                  
                     mDatabase=FirebaseDatabase.getInstance();
                     mRef=mDatabase.getReference().child("AssistBlog");
                     mRef.keepSynced(true);
@@ -159,40 +151,11 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
                     user=username.getText().toString();
                     time=timestamp.getText().toString();
                     des=desc.getText().toString();
-                    //drawable= img.getDrawable();
+                  
                     if (img.getDrawable() != null){
                         imgview=uri;
                     img.setVisibility(View.VISIBLE);}
-                   /* final String uniqueid= uid+time;
-                    final Query userQuery = mRef.orderByChild(uniqueid);
-
-                    userQuery.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                            parent = dataSnapshot.getKey();
-
-                        }
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });*/
+                  
                     img.setDrawingCacheEnabled(true);
                     Bitmap b=img.getDrawingCache();
 
@@ -203,13 +166,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
                     intent.putExtra("title",tit);
                     intent.putExtra("time",time);
                     intent.putExtra("userid",uid);
-                  //  intent.putExtra("parent",parent);
-                   // intent.putExtra("Bitmap",b);
-
-                  // if(uri!=null)
-                       // intent.putExtra("img",uri);
-
-                  //  intent.putExtra("parent1",uniqueid);
+              
                     context.startActivity(intent);
 
 
