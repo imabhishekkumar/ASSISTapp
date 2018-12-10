@@ -18,5 +18,5 @@ This application was made implemention the following:
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-Get it on Google Play Store: https://play.google.com/store/apps/details?id=com.theworkingbros.ak.assist
+
 
