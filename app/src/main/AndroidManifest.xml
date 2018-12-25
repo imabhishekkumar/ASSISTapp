@@ -27,7 +27,7 @@
             android:label="Club Details" />
         <activity android:name=".Activities.CourseMaterial" />
         <activity android:name=".Activities.cousefinal" />
-        <activity android:name=".Activities.library" />
+        <activity android:name=".Activities.results" />
         <activity android:name=".study.StudyMaterials" />
         <activity
             android:name=".Activities.LoginPage"

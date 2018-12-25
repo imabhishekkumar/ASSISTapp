@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,357 +8,386 @@
     android:fastScrollEnabled="true">
 
 
-
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#ECEFF1"
-
-    android:scaleType="fitStart"
-    tools:context=".Activities.MainActivity"
-    tools:layout_editor_absoluteY="25dp"
-    tools:layout_width="match_parent">
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/sublayout"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#212121"
-        android:onClick="sublayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="#ECEFF1"
+        android:scaleType="fitStart"
+        tools:context=".Activities.MainActivity"
+        tools:layout_editor_absoluteY="25dp"
+        tools:layout_width="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/sublayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#212121"
+            android:onClick="sublayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        </android.support.constraint.ConstraintLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="wrap_content"
+            android:layout_height="154dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatarpic">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="230dp"
+                android:orientation="horizontal">
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/cgpa"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_margin="10dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="#4DDBC3"
+                            android:onClick="clickcgpa"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/calc3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/cgpa"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/cgpa_calculator"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/cgpa"
+                            app:layout_constraintStart_toStartOf="@+id/cgpa"
+                            app:layout_constraintTop_toBottomOf="@+id/cgpa" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    tools:layout_editor_absoluteY="228dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/cal"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="10dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="#FB7E08"
+                            android:contentDescription="@string/todo3"
+                            android:onClick="clickcal"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/calender"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/Main"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/cal"
+                            app:layout_constraintStart_toStartOf="@+id/cal"
+                            app:layout_constraintTop_toBottomOf="@+id/cal" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView2"
+                    tools:layout_editor_absoluteY="228dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/club"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="10dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="#00ADEF"
+                            android:contentDescription="@string/todo2"
+                            android:onClick="clickclub"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/club1"
+                            app:layout_constraintBottom_toTopOf="@+id/textView8"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/club"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/club"
+                            app:layout_constraintStart_toStartOf="@+id/club"
+                            app:layout_constraintTop_toBottomOf="@+id/club" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView3"
+                    tools:layout_editor_absoluteY="228dp"
+
+                    >
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/lib"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="10dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="#77B3D5"
+                            android:contentDescription="@string/todo"
+                            android:onClick="resultsbtn"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/results" />
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="Results"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/lib"
+                            app:layout_constraintStart_toStartOf="@+id/lib"
+                            app:layout_constraintTop_toBottomOf="@+id/lib" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView4"
+                    tools:layout_editor_absoluteY="228dp"
+
+                    >
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/map"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="#DE4F61"
+                            android:contentDescription="@string/todo1"
+                            android:onClick="clickmap"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/map"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/campus_map"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/map"
+                            app:layout_constraintStart_toStartOf="@+id/map"
+                            app:layout_constraintTop_toBottomOf="@+id/map" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView5"
+                    tools:layout_editor_absoluteY="228dp"
+
+                    >
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/download"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="#29B5D8"
+                            android:contentDescription="TODO"
+                            android:onClick="dowbtn"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/download" />
+
+                        <TextView
+                            android:id="@+id/downloadtv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/downloads"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@+id/download"
+                            app:layout_constraintStart_toStartOf="@+id/download"
+                            app:layout_constraintTop_toBottomOf="@+id/download" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#ECEFF1"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="News Feed"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatarpic"
             android:layout_width="96dp"
-            android:layout_height="121dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="120dp"
+            android:layout_above="@id/scrollView2"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="TODO"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-
+            app:layout_constraintVertical_bias="0.032"
             app:srcCompat="@drawable/avatar" />
-
-        <TextView
-            android:id="@+id/greeting"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
-            android:layout_marginTop="116dp"
-            android:contentDescription="TODO"
-            android:fontFamily="monospace"
-            android:gravity="center_vertical"
-            android:text="Welcome"
-            android:textAlignment="center"
-            android:textColor="#F5F5F5"
-            android:textSize="19sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/about"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="18dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:textAlignment="center"
-            android:textColor="#F5F5F5"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/greeting"
-            app:layout_constraintStart_toStartOf="@+id/greeting"
-            app:layout_constraintTop_toBottomOf="@+id/greeting"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <ImageView
-            android:id="@+id/verify"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.113"
-            app:layout_constraintStart_toEndOf="@+id/greeting"
-            app:layout_constraintTop_toTopOf="@+id/greeting"
-            app:srcCompat="@drawable/verified" />
 
 
     </android.support.constraint.ConstraintLayout>
-
-
-    <ImageButton
-        android:id="@+id/cgpa"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#4DDBC3"
-        android:onClick="clickcgpa"
-        android:padding="10dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/calc3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sublayout" />
-
-    <ImageButton
-        android:id="@+id/cal"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="#FB7E08"
-        android:contentDescription="@string/todo3"
-        android:onClick="clickcal"
-        android:scaleType="centerCrop"
-        android:src="@drawable/calender"
-        app:layout_constraintEnd_toStartOf="@+id/download"
-        app:layout_constraintStart_toEndOf="@+id/map"
-        app:layout_constraintTop_toTopOf="@+id/map" />
-
-    <ImageButton
-        android:id="@+id/map"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/cgpa"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#DE4F61"
-        android:contentDescription="@string/todo1"
-        android:onClick="clickmap"
-        android:scaleType="centerCrop"
-        android:src="@drawable/map"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/cgpa"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/cgpa_calculator"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/cgpa"
-        app:layout_constraintStart_toStartOf="@+id/cgpa"
-        app:layout_constraintTop_toBottomOf="@+id/cgpa" />
-
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:text="@string/Main"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/cal"
-        app:layout_constraintStart_toStartOf="@+id/cal"
-        app:layout_constraintTop_toBottomOf="@+id/cal" />
-
-    <ImageButton
-        android:id="@+id/club"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="#00ADEF"
-        android:contentDescription="@string/todo2"
-        android:onClick="clickclub"
-        android:padding="10dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/club1"
-        app:layout_constraintBottom_toBottomOf="@+id/cgpa"
-        app:layout_constraintEnd_toStartOf="@+id/lib"
-        app:layout_constraintStart_toEndOf="@+id/cgpa"
-        app:layout_constraintTop_toTopOf="@+id/cgpa"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/club"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/club"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="@+id/club"
-        app:layout_constraintTop_toBottomOf="@+id/club" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/campus_map"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/map"
-        app:layout_constraintStart_toStartOf="@+id/map"
-        app:layout_constraintTop_toBottomOf="@+id/map" />
-
-
-    <ImageButton
-        android:id="@+id/lib"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#77B3D5"
-        android:contentDescription="@string/todo"
-        android:onClick="libbtn"
-        android:padding="10dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/club"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/club"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/libr" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/library"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/lib"
-        app:layout_constraintStart_toStartOf="@+id/lib"
-        app:layout_constraintTop_toBottomOf="@+id/lib" />
-
-    <ImageButton
-        android:id="@+id/download"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#29B5D8"
-        android:contentDescription="TODO"
-        android:onClick="dowbtn"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/cal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cal"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/download" />
-
-    <TextView
-        android:id="@+id/downloadtv"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/downloads"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/download"
-        app:layout_constraintStart_toStartOf="@+id/download"
-        app:layout_constraintTop_toBottomOf="@+id/download" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:background="#ECEFF1"
-        android:nestedScrollingEnabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:text="News Feed"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/announce" />
-
-    <TextView
-        android:id="@+id/announce"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/editshape"
-
-        android:textAlignment="center"
-        android:textColor="#607D8B"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Announcements:"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-
-</android.support.constraint.ConstraintLayout>
 </ScrollView>

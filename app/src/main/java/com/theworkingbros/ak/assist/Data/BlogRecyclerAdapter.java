@@ -27,6 +27,8 @@ import com.theworkingbros.ak.assist.R;
 import java.util.List;
 import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapter.ViewHolder> {
 
     private Context context;
@@ -88,13 +90,15 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
             }
         });
-        holder.title.setText(blog.getTitle());
+        holder.title.setText(blog.getProfilepic());
         holder.desc.setText(blog.getDesc());
         holder.username.setText(blog.getUsername());
         holder.userid.setText(blog.getUserid());
      
         holder.timestamp.setText(blog.getTimestamp());
-       
+         Picasso.with(context)
+               .load(blog.getProfilepic())
+                 .into(holder.profilePic);
         imageUrl=blog.getImage();
         if(imageUrl!=null)
         {
@@ -118,6 +122,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         public TextView username;
         public  TextView userid;
         public ImageView verified;
+        public CircleImageView profilePic;
 
 
 
@@ -135,7 +140,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             username=view.findViewById(R.id.usernameTV);
             userid=view.findViewById(R.id.post_userid);
             verified=view.findViewById(R.id.verifiied);
-
+            profilePic = view.findViewById(R.id.post_propic);
 
 
 
