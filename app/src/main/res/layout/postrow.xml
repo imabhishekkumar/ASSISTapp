@@ -19,15 +19,24 @@
             android:layout_height="wrap_content"
             android:paddingStart="10dp">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/post_propic"
+                android:layout_width="31dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/usernameTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="Username"
                 android:textColor="#000000"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/post_propic"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -60,19 +69,22 @@
             android:id="@+id/postview_titlelistt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:padding="10dp"
             android:text="Post Title"
             android:textColor="#000000"
             android:textIsSelectable="true"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/post_imglist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:adjustViewBounds="true"
-
             android:background="@android:color/transparent"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
@@ -83,17 +95,20 @@
             android:id="@+id/post_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:autoLink="web"
             android:padding="10dp"
-            android:textIsSelectable="true"
             android:text="Post Description here"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textIsSelectable="true"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/timestamp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:padding="5dp"
             android:text="Date Created:"
             android:textColor="#212121"
@@ -107,7 +122,6 @@
             android:text="userposted"
             android:textColor="#000000"
             android:visibility="gone" />
-
 
 
     </LinearLayout>

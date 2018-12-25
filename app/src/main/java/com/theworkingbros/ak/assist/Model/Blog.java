@@ -8,12 +8,15 @@ public class Blog {
     public String userid;
     public String username;
     public String uniqueid;
+    public String profilepic;
     public Blog()
     {
 
     }
 
-    public Blog(String title, String desc, String image, String timestamp, String userid,String username,String uniqueid ) {
+
+
+    public Blog(String title, String desc, String image, String timestamp, String userid, String username, String uniqueid, String profilepic ) {
         this.title = title;
         this.desc = desc;
         this.image = image;
@@ -21,7 +24,10 @@ public class Blog {
         this.userid = userid;
         this.username=username;
         this.uniqueid=uniqueid;
+        this.profilepic=profilepic;
+
     }
+
 
     public String getTitle() {
         return title;
@@ -76,5 +82,13 @@ public class Blog {
 
     public void setUniqueid(String uniqueid) {
         this.uniqueid = uniqueid;
+    }
+
+    public String getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(String profilepic) {
+        this.profilepic = profilepic;
     }
 }
