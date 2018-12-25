@@ -22,13 +22,14 @@ T: Technology
 2. GPA Calculator
 3. Campus Map
 4. Adding Posts
+5.Check results
 
 ## To be added:
-1. Check results
+1. Material Design 
 2. Campus Clubs
 3. Anything that you think will be useful..
 
 
-
-
+[Link Text](URL_to_wiki)
+## Get it on [Google Play Store](https://play.google.com/store/apps/details?id=com.theworkingbros.ak.assist)
 
