@@ -36,12 +36,12 @@ import java.util.Map;
 
 public class Addpost extends AppCompatActivity {
     private ImageButton postimg;
-    public String user,uid,parent;
+    public String user, uid, parent;
 
     TextView username;
     private EditText posttitle, postdesc;
-    private Button submitbtn,addimg;
-    private DatabaseReference mPostDatabase,userref;
+    private Button submitbtn, addimg;
+    private DatabaseReference mPostDatabase, userref;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
     private StorageReference mStorage;
@@ -49,7 +49,7 @@ public class Addpost extends AppCompatActivity {
     private static final int Gallery_code = 1;
     private final static int gallerycode = 1;
 
-    private Uri ImageUri=null;
+    private Uri ImageUri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,18 +58,18 @@ public class Addpost extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mUser = mAuth.getCurrentUser();
-        addimg=findViewById(R.id.addimg);
+        addimg = findViewById(R.id.addimg);
         mStorage = FirebaseStorage.getInstance().getReference();
         mPostDatabase = FirebaseDatabase.getInstance().getReference().child("AssistBlog");
-        userref= FirebaseDatabase.getInstance().getReference().child("AssistUsers");
+        userref = FirebaseDatabase.getInstance().getReference().child("AssistUsers");
         userref.keepSynced(true);
         postimg = findViewById(R.id.post_image);
         posttitle = findViewById(R.id.postview_titlelistt);
         postdesc = findViewById(R.id.postview_desclistt);
         submitbtn = findViewById(R.id.submitt);
-        username=findViewById(R.id.usernameid);
-        uid= mUser.getUid();
-        final Blog blog=new  Blog();
+        username = findViewById(R.id.usernameid);
+        uid = mUser.getUid();
+        final Blog blog = new Blog();
         blog.setUserid(uid);
 
         addimg.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +85,7 @@ public class Addpost extends AppCompatActivity {
         userref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                user= dataSnapshot.child(uid).child("name").getValue(String.class);
+                user = dataSnapshot.child(uid).child("name").getValue(String.class);
                 username.setText(user);
                 blog.setUsername(user);
 
@@ -99,8 +99,6 @@ public class Addpost extends AppCompatActivity {
         });
 
 
-
-
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,24 +106,6 @@ public class Addpost extends AppCompatActivity {
             }
         });
     }
-
-
- /*   @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Gallery_code && resultCode == RESULT_OK) {
-            ImageUri = data.getData();
-            postimg.setImageURI(ImageUri);
-
-        }
-    }*/
-    /////////////////////////////////////////////////////////////
-
-
-
-
-
-    //////////////////////////////////////////////////////
 
     private void startPosting() {
         mProgress.setMessage("Posting..");
@@ -140,25 +120,18 @@ public class Addpost extends AppCompatActivity {
             if (ImageUri == null) {
                 if (!TextUtils.isEmpty(titleVal) && !TextUtils.isEmpty(desVal)) {
 
-               /* StorageReference filepath= mStorage.child("Assist_Images").child(ImageUri.getLastPathSegment());
-                filepath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Uri downloadurl= taskSnapshot.getDownloadUrl();
-                 */
                     DatabaseReference newPost = mPostDatabase.push();
                     Map<String, String> dataToSave = new HashMap<>();
-                    //  java.text.DateFormat dateFormat= java.text.DateFormat.getDateInstance();
                     long yourmilliseconds = System.currentTimeMillis();
                     SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
                     Date resultdate = new Date(yourmilliseconds);
-                    //System.out.println();
+
                     String formatteddate = sdf.format(resultdate);
                     final String uniqueid = (mUser.getUid() + formatteddate);
                     dataToSave.put("title", titleVal);
                     dataToSave.put("desc", desVal);
                     dataToSave.put("uniquekey", newPost.getKey());
-                    dataToSave.put("timestamp", formatteddate);//String.valueOf(java.lang.System.currentTimeMillis()));
+                    dataToSave.put("timestamp", formatteddate);
                     dataToSave.put("userid", mUser.getUid());
                     dataToSave.put("username", user);
                     dataToSave.put(uniqueid, uniqueid);
@@ -169,8 +142,7 @@ public class Addpost extends AppCompatActivity {
 
 
                 }
-            }
-                else {
+            } else {
                 if (!TextUtils.isEmpty(titleVal) && !TextUtils.isEmpty(desVal)) {
                     StorageReference filepath = mStorage.child("Assist_Images").child(ImageUri.getLastPathSegment());
                     filepath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -178,34 +150,22 @@ public class Addpost extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Uri downloadurl = taskSnapshot.getDownloadUrl();
                             DatabaseReference newPost = mPostDatabase.push();
-                            java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
-                          //  String formatteddate = dateFormat.format(new Date(Long.valueOf(String.valueOf(java.lang.System.currentTimeMillis()))));
-                           // final String uniqueid = (mUser.getUid() + formatteddate);
                             Map<String, String> dataToSave = new HashMap<>();
                             long yourmilliseconds = System.currentTimeMillis();
                             SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
                             Date resultdate = new Date(yourmilliseconds);
                             String formatteddate = sdf.format(resultdate);
                             final String uniqueid = (mUser.getUid() + formatteddate);
-                           // Date resultdate = new Date(yourmilliseconds);
+                            // Date resultdate = new Date(yourmilliseconds);
                             dataToSave.put("title", titleVal);
                             dataToSave.put("desc", desVal);
                             dataToSave.put("image", downloadurl.toString());
-                            dataToSave.put("timestamp", formatteddate);//String.valueOf(java.lang.System.currentTimeMillis()));
+                            dataToSave.put("timestamp", formatteddate);
                             dataToSave.put("userid", mUser.getUid());
                             dataToSave.put("username", user);
                             dataToSave.put(uniqueid, uniqueid);
                             newPost.setValue(dataToSave);
-                         /* Blog blog=new  Blog();
-                            blog.setUniqueid(uniqueid);*/
 
-                       /*   newPost.child("title").setValue(titleVal);
-                            newPost.child("desc").setValue(desVal);
-                            newPost.child("image").setValue(downloadurl.toString());
-                            newPost.child("timestamp").setValue(String.valueOf(java.lang.System.currentTimeMillis()));
-                            newPost.child("userid").setValue(mUser.getUid());
-                            newPost.child("username").setValue(user);
-                            mProgress.dismiss();*/
                             startActivity(new Intent(Addpost.this, MainActivity.class));
                             finish();
 
@@ -221,15 +181,15 @@ public class Addpost extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent main= new Intent(Addpost.this, MainActivity.class);
+        Intent main = new Intent(Addpost.this, MainActivity.class);
         startActivity(main);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK && requestCode==gallerycode){
-            Uri mImageUri= data.getData();
+        if (resultCode == RESULT_OK && requestCode == gallerycode) {
+            Uri mImageUri = data.getData();
             CropImage.activity(mImageUri)
                     .setGuidelines(CropImageView.Guidelines.ON)
                     .start(Addpost.this);
@@ -242,8 +202,8 @@ public class Addpost extends AppCompatActivity {
 
                 postimg.setImageURI(ImageUri);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                //Exception error = result.getError();
-                Toast.makeText(Addpost.this,"Error",Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(Addpost.this, "Error", Toast.LENGTH_SHORT).show();
 
             }
         }

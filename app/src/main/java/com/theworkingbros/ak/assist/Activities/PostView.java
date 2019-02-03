@@ -139,13 +139,10 @@ public class PostView extends AppCompatActivity {
                     Uri uri = Uri.parse(imageUrl);
 
                     image.setVisibility(View.VISIBLE);
-                    Picasso.with(PostView.this)
+                    Picasso.get()
                             .load(uri)
                             .into(image);
                 }
-                uniquekey=dataSnapshot.child("uniquekey").getValue(String.class);
-                String parentnode=uniquekey;
-               // mReply=mDatabase.getReference().child("AssistBlog").child(parentnode);
 
             }
 

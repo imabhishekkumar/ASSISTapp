@@ -70,7 +70,7 @@ public class Userprofile extends AppCompatActivity {
                     verified.setVisibility(View.VISIBLE);
                 }
                 Picasso
-                        .with(Userprofile.this)
+                        .get()
                         .load(imgurl)
                         .into(profilepic);
                 if(uid!=mAuth.getUid())

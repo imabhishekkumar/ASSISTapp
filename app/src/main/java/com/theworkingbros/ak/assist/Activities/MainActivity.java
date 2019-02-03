@@ -43,12 +43,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton cgpa,cal,map,club;
-
-
-    String name,uid,imgurl;
-    CircleImageView avatar;
-
+    ImageButton cgpa, cal, map, club;
+    String name, uid, imgurl;
+    private CircleImageView avatar;
     private RecyclerView recyclerView;
     private BlogRecyclerAdapter blogRecyclerAdapter;
     private List<Blog> bloglist;
@@ -62,28 +59,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mDatabasereference = mDatabase.getReference().child("AssistBlog");
         mDatabasereference.keepSynced(true);
-
         DatabaseReference mdbref = mDatabase.getReference().child("AssistUsers");
         mdbref.keepSynced(true);
-        avatar=findViewById(R.id.avatarpic);
+        avatar = findViewById(R.id.avatarpic);
         cgpa = findViewById(R.id.cgpa);
         map = findViewById(R.id.map);
-
         bloglist = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         club = findViewById(R.id.club);
         cal = findViewById(R.id.cal);
-
-        uid=mUser.getUid();
-
-
-
+        uid = mUser.getUid();
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading from database");
         progressDialog.show();
@@ -92,17 +82,13 @@ public class MainActivity extends AppCompatActivity {
         mdbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                name= dataSnapshot.child(uid).child("name").getValue(String.class);
-
-
-
-                imgurl=dataSnapshot.child(uid).child("image").getValue(String.class);
+                name = dataSnapshot.child(uid).child("name").getValue(String.class);
+                imgurl = dataSnapshot.child(uid).child("image").getValue(String.class);
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setPhotoUri(Uri.parse(imgurl))
                         .build();
                 mUser.updateProfile(profileUpdates);
-                Picasso
-                        .with(MainActivity.this)
+                Picasso.get()
                         .load(imgurl)
                         .into(avatar);
                 progressDialog.dismiss();
@@ -114,28 +100,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         mDatabasereference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Blog blog=dataSnapshot.getValue(Blog.class);
-
+                Blog blog = dataSnapshot.getValue(Blog.class);
                 bloglist.add(blog);
                 Collections.reverse(bloglist);
-                /////////////////////////////////////////////
-               /* blogRecyclerAdapterwoimg= new BlogRecyclerAdapterwoimg(MainActivity.this,bloglist);
-                recyclerView.setAdapter(blogRecyclerAdapterwoimg);
-                blogRecyclerAdapterwoimg.notifyDataSetChanged();*/
-
-                ////////////////////////////////////////////////////
-
-                blogRecyclerAdapter= new BlogRecyclerAdapter(MainActivity.this,bloglist);
+                blogRecyclerAdapter = new BlogRecyclerAdapter(MainActivity.this, bloglist);
                 recyclerView.setAdapter(blogRecyclerAdapter);
                 blogRecyclerAdapter.notifyDataSetChanged();
-
-
-
             }
 
             @Override
@@ -158,14 +131,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-        //////////////////////////////////////////////////////
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.action_add:
                 if (mUser != null && mAuth != null) {
                     Intent post = new Intent(MainActivity.this, Addpost.class);
@@ -180,8 +150,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(post);
                     finish();
                 }
-
-
                 break;
             case R.id.action_changepassword:
                 if (mUser != null && mAuth != null) {
@@ -191,68 +159,54 @@ public class MainActivity extends AppCompatActivity {
                 }
 
         }
-
         return super.onOptionsItemSelected(item);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mainmenu,menu);
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-    @Override
-    protected void onResume() {
 
-        super.onResume();
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        }
-
-    public void clickcgpa(View v){
-        Intent main=new Intent(MainActivity.this,CGPA.class);
-        startActivity(main);
-
-    }
-    public void clickmap(View v)
-    {
-        Intent main=new Intent(MainActivity.this,universitymap.class);
-        startActivity(main);
-
-    }
-    public void clickclub(View v)
-    {
-        Intent main=new Intent(MainActivity.this,club.class);
-        startActivity(main);
-
-    }
-    public void clickcal(View v)
-    {
-        Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
-    }
-
-    public void resultsbtn(View v)
-    {
-       Intent main=new Intent(MainActivity.this,results.class);
-        startActivity(main);
-    }
-    public void dowbtn(View v)
-    { /*Intent main=new Intent(MainActivity.this,CourseMaterial.class );
-      startActivity(main);*/
-
-        Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show();
-
-    }
-
-    public void sublayout(View v)
-    {
-        Intent main=new Intent(MainActivity.this,Userprofile.class);
+    public void clickcgpa(View v) {
+        Intent main = new Intent(MainActivity.this, CGPA.class);
         startActivity(main);
 
     }
 
+    public void clickmap(View v) {
+        Intent main = new Intent(MainActivity.this, universitymap.class);
+        startActivity(main);
+
     }
+
+    public void clickclub(View v) {
+        Intent main = new Intent(MainActivity.this, club.class);
+        startActivity(main);
+
+    }
+
+    public void clickcal(View v) {
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+    }
+
+    public void resultsbtn(View v) {
+        Intent main = new Intent(MainActivity.this, results.class);
+        startActivity(main);
+    }
+
+    public void dowbtn(View v) {
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void sublayout(View v) {
+        Intent main = new Intent(MainActivity.this, Userprofile.class);
+        startActivity(main);
+
+    }
+
+}
 
