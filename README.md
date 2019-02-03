@@ -1,5 +1,6 @@
 ## ASSIST Android Application is exclusively for the students of Sathyabama Institute of Science and Technology.
-Part of my third-year project.
+
+ASSIST is a project started of by @imabhishekkumar of Sathyabama Coding Club considering it to be his passion in Android. The Project now has been open sourced for all the community to help and improve the on going project.
 
 A : Application for
 S : Students of
@@ -22,7 +23,7 @@ T: Technology
 2. GPA Calculator
 3. Campus Map
 4. Adding Posts
-5.Check results
+5. Check results
 
 ## To be added:
 1. Material Design 
