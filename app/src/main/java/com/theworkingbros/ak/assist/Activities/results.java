@@ -19,7 +19,7 @@ WebView webView;
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("http://cloudportal.sathyabama.ac.in/semesterresults_br/login.php");
+        webView.loadUrl("http://cloudportal.sathyabama.ac.in/resultsnov2018/login.php");
         webView.setWebViewClient(new WebViewClient());
     }
 
