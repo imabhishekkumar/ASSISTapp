@@ -19,14 +19,6 @@
             android:layout_height="wrap_content"
             android:paddingStart="10dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/post_propic"
-                android:layout_width="31dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/usernameTV"
                 android:layout_width="wrap_content"
@@ -34,9 +26,9 @@
                 android:layout_marginStart="8dp"
                 android:text="Username"
                 android:textColor="#000000"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/post_propic"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -54,14 +46,12 @@
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
 
-                android:padding="10dp"
+                android:layout_marginStart="8dp"
                 android:text="added a new post"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/usernameTV"
-                app:layout_constraintStart_toEndOf="@+id/verifiied"
+                app:layout_constraintStart_toEndOf="@+id/usernameTV"
                 app:layout_constraintTop_toTopOf="@+id/usernameTV" />
         </android.support.constraint.ConstraintLayout>
 

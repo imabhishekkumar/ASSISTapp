@@ -90,20 +90,16 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
             }
         });
-        holder.title.setText(blog.getProfilepic());
+        holder.title.setText(blog.getTitle());
         holder.desc.setText(blog.getDesc());
         holder.username.setText(blog.getUsername());
         holder.userid.setText(blog.getUserid());
-     
         holder.timestamp.setText(blog.getTimestamp());
-         Picasso.with(context)
-               .load(blog.getProfilepic())
-                 .into(holder.profilePic);
         imageUrl=blog.getImage();
         if(imageUrl!=null)
         {
 
-        Picasso.with(context)
+        Picasso.get()
                 .load(imageUrl)
                 .into(holder.img);
         uri=imageUrl;}
@@ -122,12 +118,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         public TextView username;
         public  TextView userid;
         public ImageView verified;
-        public CircleImageView profilePic;
 
-
-
-
-        String userID,parent,myParentNode;
 
         public ViewHolder(View view, Context ctx) {
             super(view);
@@ -140,7 +131,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             username=view.findViewById(R.id.usernameTV);
             userid=view.findViewById(R.id.post_userid);
             verified=view.findViewById(R.id.verifiied);
-            profilePic = view.findViewById(R.id.post_propic);
+
 
 
 
