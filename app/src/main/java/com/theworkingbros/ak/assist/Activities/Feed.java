@@ -42,7 +42,7 @@ public class Feed extends AppCompatActivity {
         setContentView(R.layout.activity_feed);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        announce=findViewById(R.id.announce);
+
         mDatabase = FirebaseDatabase.getInstance();
         announceDB = mDatabase.getReference().child("Announcement");
         announceDB.keepSynced(true);

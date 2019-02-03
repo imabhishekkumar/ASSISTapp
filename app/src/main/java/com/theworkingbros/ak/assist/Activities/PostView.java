@@ -28,7 +28,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theworkingbros.ak.assist.Data.BlogRecyclerAdapter;
-import com.theworkingbros.ak.assist.Data.ReplyAdapter;
 import com.theworkingbros.ak.assist.Model.Blog;
 import com.theworkingbros.ak.assist.R;
 
@@ -50,7 +49,6 @@ public class PostView extends AppCompatActivity {
     ImageView image,verified;
     FirebaseAuth mAuth;
     private RecyclerView recyclerView;
-    private ReplyAdapter replyRecyclerAdapter;
     private List<Blog> bloglist;
     FirebaseUser user;
     FirebaseDatabase mDatabase;
@@ -65,9 +63,7 @@ public class PostView extends AppCompatActivity {
         desc=findViewById(R.id.postview_desc);
         bloglist = new ArrayList<>();
         mDatabase=FirebaseDatabase.getInstance();
-        replybtn=findViewById(R.id.replybtn);
         verified=findViewById(R.id.verifiied);
-        recyclerView = findViewById(R.id.commentrecycleview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAuth= FirebaseAuth.getInstance();
@@ -270,9 +266,6 @@ replybtn.setOnClickListener(new View.OnClickListener() {
                 bloglist.add(blog);
                 Collections.reverse(bloglist);
 
-                replyRecyclerAdapter= new ReplyAdapter(PostView.this,bloglist);
-                recyclerView.setAdapter(replyRecyclerAdapter);
-                replyRecyclerAdapter.notifyDataSetChanged();
 
 
 
