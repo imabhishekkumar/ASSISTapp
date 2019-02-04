@@ -1,12 +1,5 @@
 <resources>
     <string name="app_name">ASSIST</string>
-    <string name="Main">Calender</string>
-    <string name="club">Club</string>
-    <string name="campus_map">Campus Map</string>
-    <string name="cgpa_calculator">CGPA Calculator</string>
-    <string name="todo1">TODO</string>
-    <string name="todo2">TODO</string>
-    <string name="todo3">TODO</string>
     <string name="subject1">Subject1</string>
     <string name="subject2">Subject2</string>
     <string name="subject3">Subject3</string>
@@ -21,11 +14,6 @@
     <string name="grade_points">Grade Points</string>
     <string name="submit">Submit</string>
     <string name="blank" />
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-    <string name="todo">TODO</string>
-    <string name="library">Library</string>
-    <string name="downloads">Downloads</string>
     <string name="hardware">Hardware Club</string>
     <string name="hardwarepres">Club President: Shashwat Shankar</string>
     <string name="hardwarecont">Contact:hardwareclub.sbu@gmail.com</string>
@@ -43,17 +31,4 @@
     <string name="invalid">No/Invalid input; if sub9 does not exist, give values =0</string>
     <string name="range">Marks/Grade points not in range</string>
     <string name="lessthan">Marks obtained is less than Max Marks</string>
-    <string name="programming">Programming Languages</string>
-    <string name="welcome">Welcome, </string>
-    <string name="home">Home</string>
-    <string name="profile">Profile</string>
-    <string name="change_password">Change Password</string>
-    <string name="signout">Signout</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 </resources>

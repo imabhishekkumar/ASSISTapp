@@ -71,9 +71,8 @@ public class PostView extends AppCompatActivity {
         mRef=mDatabase.getReference().child("AssistBlog");
 
         username=findViewById(R.id.usernameTV);
-        replyuser=findViewById(R.id.replyusernameTV);
         image=findViewById(R.id.post_imglist);
-        replytext=findViewById(R.id.reply);
+
         timestamp=findViewById(R.id.timestamp);
 
         user=mAuth.getCurrentUser();
