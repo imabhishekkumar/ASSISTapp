@@ -36,6 +36,7 @@ dependencies {
     implementation "com.android.support:cardview-v7:$supportLibVer"
     implementation "com.android.support:design:$supportLibVer"
     implementation "com.android.support:cardview-v7:$supportLibVer"
+    implementation "com.android.support:recyclerview-v7:$supportLibVer"
     //Firebase
     implementation "com.google.firebase:firebase-database:$firebaseLibVer"
     implementation "com.google.firebase:firebase-auth:$firebaseLibVer"
